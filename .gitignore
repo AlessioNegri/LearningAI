@@ -1,0 +1,6 @@
+# python 3.11.9
+# nextjs 15.4.4
+
+.venv
+__pycache__
+machine-learning-dataset
