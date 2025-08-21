@@ -27,13 +27,13 @@ export const SIDENAV_ITEMS : SideNavItem[] =
 			},
 			{
 				title: "Clustering",
-				path: "#",
+				path: "/machine-learning/clustering",
 				icon: <Icon icon="material-symbols:groups-outline" width="32" height="32" color="#FFFFFF" />
 			},
 			{
 				title: "Association Rule Learning",
 				path: "#",
-				icon: <Icon icon="icon-park-outline:association" width="32" height="32" color="#FFFFFF" />
+				icon: <Icon icon="fluent-emoji-high-contrast:link" width="32" height="32" color="#FFFFFF" />
 			},
 			{
 				title: "Reinforcement Learning",

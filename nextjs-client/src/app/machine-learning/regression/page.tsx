@@ -7,7 +7,7 @@ import { Chart, ChartData, CategoryScale, LinearScale, PointElement, LineElement
 import "chartjs-adapter-date-fns";
 import { chart_js_options } from "@/app/machine-learning/regression/script"
 
-Chart.register(TimeScale, LinearScale, TimeScale, PointElement, LineElement, Title, Tooltip, Legend);
+Chart.register(TimeScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 type DictInfo = { id: number, value: string };
 
@@ -257,29 +257,32 @@ export default function  PageRegression({ points } :  PageRegressionProps) : any
     return (
         <div>
 
-            <div className="w-full h-[700px] border-2 border-white rounded-4xl p-10 mb-8">
+            <div className="chart-container h-[700px]">
                 <Scatter ref={chartRef} redraw={false} data={data} options={options} /*plugins={[resetButton]} onClick={resetButtonClicked}*/ onDoubleClick={() => chartRef.current!.resetZoom()} />
                 {/*<button className="rounded-full border border-white text-white transition-colors hover:bg-indigo-200 hover:border-transparent hover:text-indigo-900 font-bold sm:h-12 md:w-[158px] z-30"
                         onClick={() => chartRef.current!.resetZoom()}>Reset</button>
                 */}
             </div>
 
-            <div className="flex space-x-4 content-center text-white">
-                <p className="align-middle leading-10">Dataset column</p>
-                <select name="column" id="column" className="w-[700px] border-2 border-white rounded-xl bg-indigo-400 text-white p-2"
+            <div className="chart-params">
+                <label>Dataset column</label>
+                <select name="column" id="column" className="w-[700px]"
+                        value={column}
                         onChange={ (e) => setColumn(Number(e.target.value)) }>
                     {
                         columns.map( (item: DictInfo, index: number) => { return <option key={item.id} value={item.id}>{item.value}</option> })
                     }
                 </select>
-                <label className="align-middle leading-10">Polynomial Degree</label>
-                <input type="number" value={degree} min={1} max={10} onChange={ (e) => { setDegree(Number(e.target.value)) } } className="border-2 border-white rounded-xl bg-indigo-400 text-white p-2 focus:border-indigo-900 block" placeholder="Insert the polynomial degree" required />
-                <label className="align-middle leading-10">Random Forest Estimators</label>
-                <input type="number" value={estimators} min={10} max={100} onChange={ (e) => { setEstimators(Number(e.target.value)) } } className="border-2 border-white rounded-xl bg-indigo-400 text-white p-2 focus:border-indigo-900 block" placeholder="Insert the number of estimators" required />
+
+                <label>Polynomial Degree</label>
+                <input type="number" value={degree} min={1} max={10} onChange={ (e) => { setDegree(Number(e.target.value)) } } placeholder="Insert the polynomial degree" required />
+
+                <label>Random Forest Estimators</label>
+                <input type="number" value={estimators} min={10} max={100} onChange={ (e) => { setEstimators(Number(e.target.value)) } } placeholder="Insert the number of estimators" required />
             </div>
 
-            <div className="mt-10 p-4 pt-4 border-t-2 border-orange-300 text-white text-xl">
-                <h1 className="text-orange-200 font-bold text-4xl text-center mb-4">Regression</h1>
+            <div className="description">
+                <h1 className="description-title">Regression</h1>
                 <p>
                     In <strong>Machine Learning</strong>, regression is a supervised learning technique used to predict a continuous outcome variable based on one or more input features.
                     It aims to find the relationship between variables to make predictions about future events or to estimate unknown values. There are different algorithms:

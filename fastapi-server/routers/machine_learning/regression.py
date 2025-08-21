@@ -1,7 +1,8 @@
 import datetime as dt
 import pandas as pd
 import pymongo
-import termcolor
+
+from common import utility
 
 from fastapi import APIRouter, Query
 from pydantic import BaseModel
@@ -16,37 +17,28 @@ from typing import Annotated, List
 
 # --- Parmas 
 
-X       : list = list()
-X_train : list = list()
-X_test  : list = list()
-y       : list = list()
-y_train : list = list()
-y_test  : list = list()
+X       = None
+X_train = None
+X_test  = None
+y       = None
+y_train = None
+y_test  = None
 
 router : APIRouter = APIRouter(prefix='/machine-learning/regression', tags=['Machine Learning - Regression'])
 
 class InfoData(BaseModel):
     
-    name : str
-    columns : List[int]
+    name        : str
+    columns     : List[int]
     descriptions: List[str]
     
 class PointData(BaseModel):
     
-    x : str
-    y : float
+    x: str
+    y: float
 
 # --- Utility 
 
-def log(message : str) -> None:
-    """Log a message to console
-
-    Args:
-        message (str): Message to log
-    """
-    
-    termcolor.cprint(text=message, color='blue', on_color='on_white', attrs=['bold'])
-    
 def dataset_columns() -> dict:
     """Connect to MongoDB database "LearningAI" and extract the columns from the collection "carbon_emissions"
 
@@ -83,9 +75,6 @@ def prepare_dataset(column : int) -> None:
 
     Args:
         column (int): Specific "column_order" filter
-
-    Returns:
-        list: [X_train, X_test, y_train, y_test]
     """
     
     global X

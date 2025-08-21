@@ -1,7 +1,9 @@
-import { TimeUnit, TitleOptions } from "chart.js";
+import { TitleOptions } from "chart.js";
 
 // >>> Prepare the Chart.js options
-export function chart_js_options(title: string = "Machine Learning - Regression", y_label: string = "Y-Axis Title"): any
+export function chart_js_options(title: string = "Penguins",
+                                 x_label: string = "Culmen Length [mm]",
+                                 y_label: string = "Culmen Depth [mm]"): any
 {
     // * Title
 
@@ -16,7 +18,7 @@ export function chart_js_options(title: string = "Machine Learning - Regression"
             family: "Arial",
             size: 20,
         },
-        fullSize: true,
+        fullSize: false,
         padding: 10,
         text: title
     }
@@ -40,8 +42,8 @@ export function chart_js_options(title: string = "Machine Learning - Regression"
                         size: 18,
                     },
                 },
-                position: "right",
-                align: "start"
+                position: "bottom",
+                align: "center"
             },
             title: plugins_title,
             zoom:
@@ -77,55 +79,7 @@ export function chart_js_options(title: string = "Machine Learning - Regression"
                 {
                     display: true,
                     align: "center",
-                    text: "Year",
-                    color: "rgb(255, 255, 255)",
-                    font:
-                    {
-                        family: "Arial",
-                        size: 14,
-                        weight: "bold",
-                    },
-                    padding:
-                    {
-                        top: 10,
-                        bottom: 5,
-                        left: 0,
-                        right: 0,
-                    }
-                },
-                grid:
-                {
-                    display: true,
-                    color: "#FFFFFF40",
-                },
-                type: "time" as const,
-                time:
-                {
-                    unit: "year" as TimeUnit,
-                    parser: "yyyy-MM-dd",
-                    displayFormats:
-                    {
-                        day:"yyyy-MM-dd"
-                    }
-                },
-                ticks:
-                {
-                    //stepSize: 5,
-                    color: "rgb(255, 255, 255)",
-                    font:
-                    {
-                        family: "Nunito",
-                        size: 16
-                    }
-                }
-            },
-            y:
-            {
-                title:
-                {
-                    display: true,
-                    align: "center",
-                    text: y_label,
+                    text: x_label,
                     color: "rgb(255, 255, 255)",
                     font: {
                         family: "Arial",
@@ -147,7 +101,43 @@ export function chart_js_options(title: string = "Machine Learning - Regression"
                 },
                 ticks:
                 {
-                    //stepSize: 100,
+                    color: "rgb(255, 255, 255)",
+                    font:
+                    {
+                        family: "Nunito",
+                        size: 16
+                    }
+                }
+            },
+            y:
+            {
+                title:
+                {
+                    display: true,
+                    align: "center",
+                    text: y_label,
+                    color: "rgb(255, 255, 255)",
+                    font:
+                    {
+                        family: "Arial",
+                        size: 14,
+                        weight: "bold",
+                    },
+                    padding:
+                    {
+                        top: 10,
+                        bottom: 5,
+                        left: 0,
+                        right: 0,
+                    }
+                },
+                grid:
+                {
+                    display: true,
+                    color: "#FFFFFF40"
+                },
+                ticks:
+                {
                     color: "rgb(255, 255, 255)",
                     font:
                     {
@@ -162,4 +152,16 @@ export function chart_js_options(title: string = "Machine Learning - Regression"
     // * Return
 
     return options
+}
+
+// >>> Generate a random color string
+export function getRandomColor()
+{
+    var letters = '0123456789ABCDEF';
+
+    var color = '#';
+
+    for (var i = 0; i < 6; i++) color += letters[Math.floor(Math.random() * 16)];
+    
+    return color;
 }
