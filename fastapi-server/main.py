@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from routers.machine_learning.regression import router as router_machine_learning_regression
 from routers.machine_learning.classification import router as router_machine_learning_classification
 from routers.machine_learning.clustering import router as router_machine_learning_clustering
+from routers.machine_learning.associaton_rule_learning import router as router_machine_learning_associaton_rule_learning
 
 # >>> Pylance for type checking (python.analysis.typeCheckingMode settings)
 # >>> Launch from CL: fastapi dev fastapi-server/main.py
@@ -33,3 +34,4 @@ app.add_middleware(CORSMiddleware, allow_origins=[ 'http://localhost:3000' ], al
 app.include_router(router_machine_learning_regression)
 app.include_router(router_machine_learning_classification)
 app.include_router(router_machine_learning_clustering)
+app.include_router(router_machine_learning_associaton_rule_learning)

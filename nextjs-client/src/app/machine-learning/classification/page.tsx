@@ -407,7 +407,7 @@ export default function PageClassification() : any
 
     useEffect(() => { get_data(); }, [method, neighbors, kernel, estimators]);
     
-    // --- Rendering
+    // --- Rendering 
 
     return (
         <div>

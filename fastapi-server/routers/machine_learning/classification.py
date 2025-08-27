@@ -96,7 +96,7 @@ def prepare_dataset(method : DimensionalityReductionType) -> list:
     
     # * Prepare data
     
-    original_data = list(cursor)
+    original_data : list = list(cursor)
     
     temp : pd.DataFrame = pd.DataFrame(original_data)
     

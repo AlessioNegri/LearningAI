@@ -37,6 +37,7 @@ body {
 	label {
 		@apply align-middle;
 		@apply leading-10;
+		@apply text-xl;
 	}
 
 	input {
@@ -47,6 +48,24 @@ body {
 		@apply text-white p-2;
 		@apply focus:border-indigo-900;
 		@apply block;
+		@apply text-xl;
+	}
+
+	button {
+		@apply text-xl;
+		@apply bg-indigo-300;
+		@apply p-2;
+		@apply border-2;
+		@apply border-white;
+		@apply rounded-xl;
+		@apply cursor-pointer;
+		@apply hover:bg-gradient-to-r;
+		@apply hover:from-green-500;
+		@apply hover:to-blue-500;
+		@apply transition;
+		@apply delay-150;
+		@apply duration-300;
+		@apply ease-in-out;
 	}
 }
 
@@ -71,7 +90,7 @@ body {
 		@apply p-4 pt-4;
 		@apply border-t-2;
 		@apply border-orange-300;
-		@apply text-white text-xl;
+		@apply text-white text-2xl;
 	}
 
 	.description-title {

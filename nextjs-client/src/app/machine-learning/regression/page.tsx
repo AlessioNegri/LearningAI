@@ -3,7 +3,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import React, { MouseEvent, MouseEventHandler, useEffect, useRef, useState } from "react";
 import { Scatter } from "react-chartjs-2";
-import { Chart, ChartData, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale, Point, TimeUnit, PluginChartOptions, TitleOptions, ScaleChartOptions, LegendOptions, ChartEvent, LegendElement, LegendItem, Plugin } from "chart.js";
+import { Chart, ChartData, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale, Point, Plugin } from "chart.js";
 import "chartjs-adapter-date-fns";
 import { chart_js_options } from "@/app/machine-learning/regression/script"
 
@@ -253,7 +253,7 @@ export default function  PageRegression({ points } :  PageRegressionProps) : any
         //chartRef.current!.resetZoom();
     };
 
-    // --- Rendering
+    // --- Rendering 
     return (
         <div>
 

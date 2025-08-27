@@ -80,3 +80,7 @@ The project is structured in the following folders:
 ### Clustering
 
 <p align="center"><img src="./images/clustering.png?" width="100%"></p>
+
+### Association Rule Learning
+
+<p align="center"><img src="./images/association-rule-learning.png?" width="100%"></p>

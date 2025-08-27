@@ -32,7 +32,7 @@ export const SIDENAV_ITEMS : SideNavItem[] =
 			},
 			{
 				title: "Association Rule Learning",
-				path: "#",
+				path: "/machine-learning/association-rule-learning",
 				icon: <Icon icon="fluent-emoji-high-contrast:link" width="32" height="32" color="#FFFFFF" />
 			},
 			{

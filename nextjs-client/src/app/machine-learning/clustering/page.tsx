@@ -2,12 +2,11 @@
 
 import axios, { AxiosRequestConfig } from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import { Icon } from '@iconify/react';
 import { Bubble } from 'react-chartjs-2';
-import { Chart, ChartData, LinearScale, PointElement, Title, Legend, BubbleDataPoint } from 'chart.js';
+import { Chart, ChartData, LinearScale, PointElement, Title, Legend, BubbleDataPoint, Tooltip } from 'chart.js';
 import { chart_js_options, getRandomColor } from './script';
 
-Chart.register(LinearScale, PointElement, Title, Legend);
+Chart.register(LinearScale, PointElement, Title, Legend, Tooltip);
 
 interface ClusteringDict
 {
