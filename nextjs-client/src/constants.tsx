@@ -37,7 +37,7 @@ export const SIDENAV_ITEMS : SideNavItem[] =
 			},
 			{
 				title: "Reinforcement Learning",
-				path: "#",
+				path: "/machine-learning/reinforcement-learning",
 				icon: <Icon icon="game-icons:strong" width="32" height="32" color="#FFFFFF" />
 			},
 			{

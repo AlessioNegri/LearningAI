@@ -84,3 +84,7 @@ The project is structured in the following folders:
 ### Association Rule Learning
 
 <p align="center"><img src="./images/association-rule-learning.png?" width="100%"></p>
+
+### Reinforcement Learning
+
+<p align="center"><img src="./images/reinforcement-learning.png?" width="100%"></p>

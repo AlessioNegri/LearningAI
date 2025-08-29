@@ -45,9 +45,9 @@ def prepare_dataset() -> list:
 
     database : pymongo.database.Database = mongo_client.get_database('LearningAI')
 
-    titanic_collection : pymongo.collection.Collection = database.get_collection('penguins')
+    penguins_collection : pymongo.collection.Collection = database.get_collection('penguins')
 
-    cursor = titanic_collection.find()
+    cursor = penguins_collection.find()
     
     # * Prepare data
     
