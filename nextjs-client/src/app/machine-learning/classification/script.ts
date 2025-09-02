@@ -1,24 +1,26 @@
-import { TitleOptions } from "chart.js";
+import { TitleOptions } from 'chart.js';
 
 // >>> Prepare the Chart.js options
-export function chart_js_options(title: string = "Machine Learning - Classification", y_label: string = "Y-Axis Title"): any
+export function chart_js_options(title: string = 'Machine Learning - Classification',
+                                 y_label: string = 'Y-Axis Title'): any
 {
     // * Title
 
     const plugins_title : TitleOptions =
     {
-        align: "center",
+        text: title,
+        align: 'center',
+        position: 'top',
+        color: 'rgb(255, 255, 255)',
         display: true,
-        position: "top",
-        color: "rgb(255, 255, 255)",
-        font:
-        {
-            family: "Arial",
-            size: 20,
-        },
         fullSize: true,
         padding: 10,
-        text: title
+        font:
+        {
+            family: 'sans-serif',
+            size: 30,
+            weight: 'bold'
+        }
     }
 
     // * Options
@@ -29,43 +31,33 @@ export function chart_js_options(title: string = "Machine Learning - Classificat
         maintainAspectRatio: false,
         plugins:
         {
+            title: plugins_title,
             legend:
             {
+                position: 'bottom',
+                align: 'center',
                 labels:
                 {
-                    color: "rgb(255, 255, 255)",
+                    color: 'rgb(255, 255, 255)',
                     font:
                     {
-                        family: "Arial",
-                        size: 18,
-                    },
-                },
-                position: "bottom",
-                align: "center"
-            },
-            title: plugins_title,
-            zoom:
-            {
-                zoom:
-                {
-                    mode: "xy",
-                    wheel:
-                    {
-                        enabled: true
-                    },
-                    drag:
-                    {
-                        enabled: true,
-                        borderColor: "rgb(54, 162, 235)",
-                        borderWidth: 1,
-                        backgroundColor: "rgba(54, 162, 235, 0.3)"
+                        family: 'sans-serif',
+                        size: 24,
+                        weight: 'italic'
                     }
-                },
-                pan:
+                }
+            },
+            tooltip:
+            {
+                titleFont:
                 {
-                    enabled: true,
-                    mode: "xy",
-                    modifierKey: "ctrl"
+                    family: 'sans-serif',
+                    size: 20,
+                },
+                bodyFont:
+                {
+                    family: 'sans-serif',
+                    size: 20,
                 }
             }
         },
@@ -73,18 +65,37 @@ export function chart_js_options(title: string = "Machine Learning - Classificat
         {
             x:
             {
+                title:
+                {
+                    display: true,
+                    text: '',
+                    align: 'center',
+                    color: 'rgb(255, 255, 255)',
+                    font:
+                    {
+                        family: 'sans-serif',
+                        size: 24
+                    },
+                    padding:
+                    {
+                        top: 0,
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                    }
+                },
                 grid:
                 {
                     display: true,
-                    color: "#FFFFFF40"
+                    color: '#FFFFFF40'
                 },
                 ticks:
                 {
-                    color: "rgb(255, 255, 255)",
+                    color: 'rgb(255, 255, 255)',
                     font:
                     {
-                        family: "Nunito",
-                        size: 16
+                        family: 'sans-serif',
+                        size: 20
                     }
                 }
             },
@@ -93,34 +104,34 @@ export function chart_js_options(title: string = "Machine Learning - Classificat
                 title:
                 {
                     display: true,
-                    align: "center",
                     text: y_label,
-                    color: "rgb(255, 255, 255)",
-                    font: {
-                        family: "Arial",
-                        size: 14,
-                        weight: "bold",
+                    align: 'center',
+                    color: 'rgb(255, 255, 255)',
+                    font:
+                    {
+                        family: 'sans-serif',
+                        size: 20
                     },
                     padding:
                     {
-                        top: 10,
-                        bottom: 5,
+                        top: 0,
+                        bottom: 30,
                         left: 0,
-                        right: 0,
+                        right: 0
                     }
                 },
                 grid:
                 {
                     display: true,
-                    color: "#FFFFFF40"
+                    color: '#FFFFFF40'
                 },
                 ticks:
                 {
-                    color: "rgb(255, 255, 255)",
+                    color: 'rgb(255, 255, 255)',
                     font:
                     {
-                        family: "Nunito",
-                        size: 16
+                        family: 'sans-serif',
+                        size: 20
                     }
                 }
             }

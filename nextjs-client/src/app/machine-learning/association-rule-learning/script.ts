@@ -1,24 +1,25 @@
-import { TitleOptions, Tooltip } from "chart.js";
+import { TitleOptions, Tooltip } from 'chart.js';
 
 // >>> Prepare the Chart.js options
-export function chart_js_options(title: string = "Market Basket"): any
+export function chart_js_options(title: string = 'Market Basket'): any
 {
     // * Title
 
     const plugins_title : TitleOptions =
     {
-        align: "center",
+        text: title,
+        align: 'center',
+        position: 'top',
+        color: 'rgb(255, 255, 255)',
         display: true,
-        position: "top",
-        color: "rgb(255, 255, 255)",
+        fullSize: true,
+        padding: 10,
         font:
         {
-            family: "Arial",
-            size: 20,
-        },
-        fullSize: false,
-        padding: 10,
-        text: title
+            family: 'sans-serif',
+            size: 30,
+            weight: 'bold'
+        }
     }
 
     // * Options
@@ -29,31 +30,32 @@ export function chart_js_options(title: string = "Market Basket"): any
         maintainAspectRatio: false,
         plugins:
         {
+            title: plugins_title,
             legend:
             {
+                position: 'bottom',
+                align: 'center',
                 labels:
                 {
-                    color: "rgb(255, 255, 255)",
+                    color: 'rgb(255, 255, 255)',
                     font:
                     {
-                        family: "Arial",
-                        size: 20,
-                    },
-                },
-                position: "bottom",
-                align: "center"
+                        family: 'sans-serif',
+                        size: 0,
+                        weight: 'italic'
+                    }
+                }
             },
-            title: plugins_title,
             tooltip:
             {
                 titleFont:
                 {
-                    family: "Arial",
+                    family: 'sans-serif',
                     size: 20,
                 },
                 bodyFont:
                 {
-                    family: "Arial",
+                    family: 'sans-serif',
                     size: 20,
                 }
             }
@@ -65,31 +67,30 @@ export function chart_js_options(title: string = "Market Basket"): any
                 grid:
                 {
                     display: true,
-                    color: "#FFFFFF80"
+                    color: '#FFFFFF80'
                 },
                 ticks:
                 {
-                    color: "rgb(255, 255, 255)",
-                    backdropColor: "rgb(255, 255, 255, 0)",
+                    color: 'rgb(255, 255, 255)',
+                    backdropColor: 'rgb(255, 255, 255, 0)',
                     font:
                     {
-                        family: "Nunito",
-                        size: 24,
-                        weight: "bold"
+                        family: 'sans-serif',
+                        size: 24
                     }
                 },
                 pointLabels:
                 {
                     display: true,
                     centerPointLabels: true,
-                    color: "rgb(255, 255, 255)",
-                    backdropColor: "rgb(0, 0, 80)",
+                    color: '#7bf1a8',
+                    backdropColor: '#024a71',
                     borderRadius: 10,
                     font:
                     {
-                        family: "Nunito",
+                        family: 'Nunito',
                         size: 24,
-                        weight: "bold"
+                        weight: 'bold'
                     }
                 }
             }

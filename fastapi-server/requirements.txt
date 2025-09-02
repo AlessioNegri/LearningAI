@@ -51,3 +51,7 @@
 #threadpoolctl-3.6.0
 "pymongo"==4.13.2
 "apyori"==1.1.2
+"nltk"==3.9.1
+#regex-2025.8.29
+#tqdm-4.67.1
+"xgboost"==3.0.4

@@ -135,7 +135,7 @@ export default function PageAssociationRuleLearning() : any
             <div className="chart-params">
                 <label>Transaction</label>
                 <input value={transaction} readOnly className='flex-1'/>
-                <button onClick={ (e : any) => { dataset() } }>Get Random</button>
+                <button className='action-button' onClick={ (e : any) => { dataset() } }>Get Random</button>
                 <label className='ml-4'>Largest Results</label>
                 <input type='number' min={1} max={10} value={largest} onChange={ (e) => setLargest(Number(e.target.value)) }/>
             </div>

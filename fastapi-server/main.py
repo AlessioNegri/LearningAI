@@ -7,6 +7,7 @@ from routers.machine_learning.classification import router as router_machine_lea
 from routers.machine_learning.clustering import router as router_machine_learning_clustering
 from routers.machine_learning.associaton_rule_learning import router as router_machine_learning_associaton_rule_learning
 from routers.machine_learning.reinforcement_learning import router as router_machine_learning_reinforcement_learning
+from routers.machine_learning.natural_language_processing import router as router_machine_learning_natural_language_processing
 
 # >>> Pylance for type checking (python.analysis.typeCheckingMode settings)
 # >>> Launch from CL: fastapi dev fastapi-server/main.py
@@ -38,3 +39,4 @@ app.include_router(router_machine_learning_classification)
 app.include_router(router_machine_learning_clustering)
 app.include_router(router_machine_learning_associaton_rule_learning)
 app.include_router(router_machine_learning_reinforcement_learning)
+app.include_router(router_machine_learning_natural_language_processing)

@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
@@ -20,34 +20,40 @@ const MenuItem = ({ item }: { item: SideNavItem }) =>
 	const toggleSubMenu = () => { setSubMenuOpen(!subMenuOpen) };
 
 	return (
-		<div className="">
+		<div className=''>
 			{
 			item.submenu ?
 			(
 			<>
 			<button onClick={toggleSubMenu}
-					className={`flex flex-row items-center p-2 rounded-lg hover-bg-indigo-100 w-full justify-between hover:bg-indigo-400 ${ pathname.includes(item.path) ? "bg-indigo-400" : "" }`}>
+					className={`flex flex-row items-center p-2 rounded-lg w-full justify-between hover:bg-green-800 ${ pathname.includes(item.path) ? "bg-green-900" : "" }`}>
 
-				<div className="flex flex-row space-x-4 items-center">
+				<div className='flex flex-row space-x-4 items-center'>
+
 					{item.icon}
-					<span className="font-semibold text-xl flex text-white">{item.title}</span>
+
+					<span className='font-mono text-base text-white'>{item.title}</span>
+
 				</div>
 
-				<div className={`${subMenuOpen ? 'rotate-180' : ''} flex`}>
-					<Icon icon="lucide:chevron-down" width="24" height="24" color="#FFFFFF" />
+				<div className={`${subMenuOpen ? 'rotate-180' : ''}`}>
+
+					<Icon icon='lucide:chevron-down' width={24} height={24} color="#00FF00" />
+
 				</div>
 
 			</button>
 
 			{subMenuOpen && (
-			<div className="my-2 ml-2 flex flex-col space-y-4">
+			<div className='my-2 ml-2 flex flex-col space-y-4'>
 				{
 				item.subMenuItems?.map((subItem, idx) => {
 					return (
-						<Link key={idx} href={subItem.path} className={`flex flex-row space-x-4 items-center pl-2 ${subItem.path === pathname ? "font-bold border-l-4 border-orange-300" : ""}`}>
+						<Link key={idx} href={subItem.path} className={`flex flex-row space-x-4 items-center p-2 hover:border-l-4 hover:border-green-300 ${subItem.path === pathname ? 'font-bold border-l-4 border-green-300' : 'hover:border-sky-300'}`}>
 
 							{subItem.icon}
-							<span className={`${subItem.path === pathname ? "text-orange-300" : "text-white"}`}>{subItem.title}</span>
+
+							<span className={`font-mono text-base ${subItem.path === pathname ? 'text-green-300' : 'text-white'}`}>{subItem.title}</span>
 
 						</Link>
 					);
@@ -58,10 +64,11 @@ const MenuItem = ({ item }: { item: SideNavItem }) =>
 			</>)
 			:
 			(
-			<Link href={item.path} className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-indigo-400 ${item.path === pathname ? "bg-indigo-400" : ""}`}>
+			<Link href={item.path} className={`flex flex-row space-x-4 items-center p-2 rounded-lg hover:bg-green-800 ${item.path === pathname ? 'bg-green-900' : ''}`}>
 				
 				{item.icon}
-				<span className="font-semibold text-xl flex text-white">{item.title}</span>
+
+				<span className={`font-mono text-xl flex ${item.path === pathname ? 'text-green-300' : 'text-white'}`}>{item.title}</span>
 
 			</Link>
 			)}
@@ -73,23 +80,44 @@ const MenuItem = ({ item }: { item: SideNavItem }) =>
 
 const SideNav = () =>
 {
-	return (
-		<div className="md:w-80 bg-indigo-800 h-screen flex-1 fixed border-r-2 border-indigo-400 hidden md:flex">
-			
-			<div className="flex flex-col space-y-6 w-full bg-repeat heropattern-circuitboard-red-100">
-			
-				<Link href="/" className="flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b-2 border-indigo-400 h-[52px] w-full">
+	const pathname = usePathname();
 
-					<Image alt="Icon" src={"/icon.png"} width={24} height={24} aria-hidden />
-					<span className="font-bold text-xl hidden md:flex text-white">LearningAI</span>
+	const [datasetIcon, setDatasetIcon] = useState('');
+
+	useEffect(() =>
+	{
+		const page = pathname!.split('/')[2];
+
+		if 		(page === 'regression') 					setDatasetIcon('carbon:emissions-management');
+		else if (page === 'classification') 				setDatasetIcon('game-icons:sinking-ship');
+		else if (page === 'clustering') 					setDatasetIcon('game-icons:penguin');
+		else if (page === 'association-rule-learning') 		setDatasetIcon('fluent-emoji-high-contrast:shopping-cart');
+		else if (page === 'reinforcement-learning') 		setDatasetIcon('circum:shop');
+		else if (page === 'natural-language-processing')	setDatasetIcon('ri:speak-ai-line');
+		else 												setDatasetIcon('');
+	}, [pathname]);
+
+	return (
+		<div className='md:w-80 bg-sky-950 h-screen flex-1 fixed border-r-2 border-green-400 hidden md:flex'>
+			
+			<div className='flex flex-col space-y-6 w-full bg-repeat heropattern-circuitboard-red-100 pb-4'>
+			
+				<Link href='/' className='flex flex-row space-x-3 items-center justify-center md:justify-start md:px-6 border-b-2 border-green-400 h-[72px] w-full'>
+
+					{/*<Image alt='Icon' src={'/icon.png'} width={24} height={24} aria-hidden />*/}
+					<Icon icon='fa7-solid:robot' width={32} height={32} color='#7bf1a8' />,
+					
+					<span className='font-bold font-mono text-3xl hidden md:flex text-green-300'>LearningAI</span>
 
 				</Link>
 
-				<div className="flex flex-col space-y-2 md:px-6">
+				<div className='flex flex-col space-y-2 md:px-6'>
 					
 					{ SIDENAV_ITEMS.map((item : SideNavItem, idx : number) => { return <MenuItem key={idx} item={item} /> }) }
 
 				</div>
+
+				<Icon icon={datasetIcon} width={100} height={100} color='#7bf1a8' className='mt-auto w-full' />
 
 			</div>
 

@@ -18,7 +18,7 @@
 ![Static Badge](https://img.shields.io/badge/chart.js-white?style=flat&logo=chart.js&logoColor=white&label=4.1.11&labelColor=blue&color=darkcyan)
 ![Static Badge](https://img.shields.io/badge/framer_motion-white?style=flat&logo=framer&logoColor=white&label=12.23.12&labelColor=blue&color=darkcyan)
 
-<p align="center"><img src="./images/home.png?" width="100%"></p>
+<p align="center"><img src="./images/home.png" width="100%"></p>
 
 ## 📖 Introduction
 
@@ -71,20 +71,24 @@ The project is structured in the following folders:
 
 ### Regression
 
-<p align="center"><img src="./images/regression.png?" width="100%"></p>
+<p align="center"><img src="./images/regression.png" width="100%"></p>
 
 ### Classification
 
-<p align="center"><img src="./images/classification.png?" width="100%"></p>
+<p align="center"><img src="./images/classification.png" width="100%"></p>
 
 ### Clustering
 
-<p align="center"><img src="./images/clustering.png?" width="100%"></p>
+<p align="center"><img src="./images/clustering.png" width="100%"></p>
 
 ### Association Rule Learning
 
-<p align="center"><img src="./images/association-rule-learning.png?" width="100%"></p>
+<p align="center"><img src="./images/association-rule-learning.png" width="100%"></p>
 
 ### Reinforcement Learning
 
-<p align="center"><img src="./images/reinforcement-learning.png?" width="100%"></p>
+<p align="center"><img src="./images/reinforcement-learning.png" width="100%"></p>
+
+### Natural Language Processing
+
+<p align="center"><img src="./images/natural-language-processing.png" width="100%"></p>

@@ -3,7 +3,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { Bubble } from 'react-chartjs-2';
-import { Chart, ChartData, LinearScale, PointElement, Title, Legend, BubbleDataPoint, Tooltip } from 'chart.js';
+import { Chart, ChartData, LinearScale, PointElement, Title, Legend, BubbleDataPoint, Tooltip, Plugin } from 'chart.js';
 import { chart_js_options, getRandomColor } from './script';
 
 Chart.register(LinearScale, PointElement, Title, Legend, Tooltip);
@@ -220,6 +220,8 @@ export default function PageClustering() : any
     }
 
     // --- Use Effect 
+
+    useEffect(() => { if (typeof window !== "undefined") { import("chartjs-plugin-zoom").then((plugin) => { Chart.register(plugin.default); }); } }, []);
     
     useEffect(() => { get_data() }, []);
         
@@ -231,7 +233,7 @@ export default function PageClustering() : any
         <div className='w-full heropattern-jigsaw-red-100/50'>
 
             <div className='chart-container h-[700px]'>
-                <Bubble ref={datasetRef} redraw={false} data={datasetData} options={chart_js_options()} />
+                <Bubble ref={datasetRef} redraw={false} data={datasetData} options={chart_js_options()} onDoubleClick={() => datasetRef.current!.resetZoom()} />
             </div>
 
             <div className="chart-params">

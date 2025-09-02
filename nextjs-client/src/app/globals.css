@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Trocchi&display=swap');*/
+/*@import url('https://fonts.googleapis.com/css2?family=Nova+Square&family=Roboto+Slab:wght@100..900&family=Trocchi&display=swap');*/
 @import "tailwindcss";
 
 :root {
@@ -10,6 +14,8 @@
 	--color-foreground: var(--foreground);
 	--font-sans: var(--font-geist-sans);
 	--font-mono: var(--font-geist-mono);
+	--font-roboto: "Roboto", sans-serif;
+	--font-roboto-slab: "Roboto Slab", serif;
 }
 
 @media (prefers-color-scheme: white) {
@@ -26,31 +32,53 @@ body {
 }
 
 @layer base {
+	div {
+		@apply font-roboto-slab;
+		@apply text-base;
+	}
+
 	select {
 		@apply border-2;
-		@apply border-white;
+		@apply border-green-300;
 		@apply rounded-xl;
-		@apply bg-indigo-400;
+		@apply bg-sky-800;
 		@apply text-white p-2;
+		@apply text-lg;
+		@apply font-mono;
 	}
 
 	label {
 		@apply align-middle;
 		@apply leading-10;
-		@apply text-xl;
+		@apply text-lg;
+		@apply font-mono;
 	}
 
 	input {
 		@apply border-2;
-		@apply border-white;
+		@apply border-green-300;
 		@apply rounded-xl;
-		@apply bg-indigo-400;
+		@apply bg-sky-800;
 		@apply text-white p-2;
-		@apply focus:border-indigo-900;
+		@apply focus:border-sky-300;
 		@apply block;
-		@apply text-xl;
+		@apply text-lg;
+		@apply font-mono;
 	}
 
+	tr {
+		@apply h-20;
+	}
+
+	th {
+		@apply p-4;
+	}
+
+	td {
+		@apply p-4;
+	}
+
+	/*
 	button {
 		@apply text-xl;
 		@apply bg-indigo-300;
@@ -67,6 +95,7 @@ body {
 		@apply duration-300;
 		@apply ease-in-out;
 	}
+	*/
 }
 
 @layer components {
@@ -83,20 +112,40 @@ body {
 		@apply space-x-4;
 		@apply content-center;
 		@apply text-white;
+		@apply m-4;
 	}
 
 	.description {
 		@apply mt-10;
 		@apply p-4 pt-4;
 		@apply border-t-2;
-		@apply border-orange-300;
+		@apply border-green-300;
 		@apply text-white text-2xl;
+		@apply font-mono;
+		@apply text-justify;
 	}
 
 	.description-title {
-		@apply text-orange-200;
+		@apply text-green-300;
 		@apply font-bold;
 		@apply text-4xl;
 		@apply text-center mb-4;
+		@apply font-mono;
+	}
+
+	.action-button {
+		@apply bg-sky-800;
+		@apply border-2;
+		@apply border-green-300;
+		@apply rounded-xl;
+		@apply p-3;
+		@apply text-xl;
+		@apply font-mono;
+		@apply cursor-pointer;
+		@apply hover:bg-green-800;
+		@apply transition;
+		@apply delay-150;
+		@apply duration-150;
+		@apply ease-in-out;
 	}
 }

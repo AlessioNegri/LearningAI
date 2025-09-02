@@ -11,7 +11,7 @@ from sklearn.decomposition import PCA, KernelPCA
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, confusion_matrix, ConfusionMatrixDisplay
+from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
@@ -173,6 +173,9 @@ def prepare_dataset(method : DimensionalityReductionType) -> list:
 
 def train_and_json(model) -> dict:
     """Train with the given model and prepare the JSON response
+    
+    Args:
+        model (any): Classification model
 
     Returns:
         dict: JSON response
@@ -214,7 +217,7 @@ def dataset(method : Annotated[int | None, Query(alias='method', title='Dimensio
 @router.get(path="/logistic-regression", response_model=ConfusionMatrix)
 def logistic_regression():
     
-    model = LogisticRegression()
+    model = LogisticRegression(random_state=42)
     
     return train_and_json(model)
 

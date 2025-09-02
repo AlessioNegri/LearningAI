@@ -1,26 +1,27 @@
-import { TitleOptions } from "chart.js";
+import { TitleOptions } from 'chart.js';
 
 // >>> Prepare the Chart.js options
-export function chart_js_options(title: string = "Penguins",
-                                 x_label: string = "Culmen Length [mm]",
-                                 y_label: string = "Culmen Depth [mm]"): any
+export function chart_js_options(title: string = 'Penguins',
+                                 x_label: string = 'Culmen Length [mm]',
+                                 y_label: string = 'Culmen Depth [mm]'): any
 {
     // * Title
 
     const plugins_title : TitleOptions =
     {
-        align: "center",
+        text: title,
+        align: 'center',
+        position: 'top',
+        color: 'rgb(255, 255, 255)',
         display: true,
-        position: "top",
-        color: "rgb(255, 255, 255)",
+        fullSize: true,
+        padding: 10,
         font:
         {
-            family: "Arial",
-            size: 20,
-        },
-        fullSize: false,
-        padding: 10,
-        text: title
+            family: 'sans-serif',
+            size: 30,
+            weight: 'bold'
+        }
     }
 
     // * Options
@@ -31,26 +32,40 @@ export function chart_js_options(title: string = "Penguins",
         maintainAspectRatio: false,
         plugins:
         {
+            title: plugins_title,
             legend:
             {
+                position: 'bottom',
+                align: 'center',
                 labels:
                 {
-                    color: "rgb(255, 255, 255)",
+                    color: 'rgb(255, 255, 255)',
                     font:
                     {
-                        family: "Arial",
-                        size: 18,
-                    },
-                },
-                position: "bottom",
-                align: "center"
+                        family: 'sans-serif',
+                        size: 24,
+                        weight: 'italic'
+                    }
+                }
             },
-            title: plugins_title,
+            tooltip:
+            {
+                titleFont:
+                {
+                    family: 'sans-serif',
+                    size: 20,
+                },
+                bodyFont:
+                {
+                    family: 'sans-serif',
+                    size: 20,
+                }
+            },
             zoom:
             {
                 zoom:
                 {
-                    mode: "xy",
+                    mode: 'xy',
                     wheel:
                     {
                         enabled: true
@@ -58,16 +73,16 @@ export function chart_js_options(title: string = "Penguins",
                     drag:
                     {
                         enabled: true,
-                        borderColor: "rgb(54, 162, 235)",
-                        borderWidth: 1,
-                        backgroundColor: "rgba(54, 162, 235, 0.3)"
+                        borderWidth: 3,
+                        borderColor: 'rgb(0, 255, 0)',
+                        backgroundColor: 'rgba(0, 255, 0, 0.1)'
                     }
                 },
                 pan:
                 {
                     enabled: true,
-                    mode: "xy",
-                    modifierKey: "ctrl"
+                    mode: 'xy',
+                    modifierKey: 'ctrl'
                 }
             }
         },
@@ -78,18 +93,18 @@ export function chart_js_options(title: string = "Penguins",
                 title:
                 {
                     display: true,
-                    align: "center",
                     text: x_label,
-                    color: "rgb(255, 255, 255)",
-                    font: {
-                        family: "Arial",
-                        size: 14,
-                        weight: "bold",
+                    align: 'center',
+                    color: 'rgb(255, 255, 255)',
+                    font:
+                    {
+                        family: 'sans-serif',
+                        size: 24
                     },
                     padding:
                     {
-                        top: 10,
-                        bottom: 5,
+                        top: 15,
+                        bottom: 15,
                         left: 0,
                         right: 0,
                     }
@@ -97,15 +112,15 @@ export function chart_js_options(title: string = "Penguins",
                 grid:
                 {
                     display: true,
-                    color: "#FFFFFF40"
+                    color: '#FFFFFF40'
                 },
                 ticks:
                 {
-                    color: "rgb(255, 255, 255)",
+                    color: 'rgb(255, 255, 255)',
                     font:
                     {
-                        family: "Nunito",
-                        size: 16
+                        family: 'sans-serif',
+                        size: 20
                     }
                 }
             },
@@ -114,19 +129,18 @@ export function chart_js_options(title: string = "Penguins",
                 title:
                 {
                     display: true,
-                    align: "center",
                     text: y_label,
-                    color: "rgb(255, 255, 255)",
+                    align: 'center',
+                    color: 'rgb(255, 255, 255)',
                     font:
                     {
-                        family: "Arial",
-                        size: 14,
-                        weight: "bold",
+                        family: 'sans-serif',
+                        size: 20
                     },
                     padding:
                     {
-                        top: 10,
-                        bottom: 5,
+                        top: 0,
+                        bottom: 30,
                         left: 0,
                         right: 0,
                     }
@@ -134,15 +148,15 @@ export function chart_js_options(title: string = "Penguins",
                 grid:
                 {
                     display: true,
-                    color: "#FFFFFF40"
+                    color: '#FFFFFF40'
                 },
                 ticks:
                 {
-                    color: "rgb(255, 255, 255)",
+                    color: 'rgb(255, 255, 255)',
                     font:
                     {
-                        family: "Nunito",
-                        size: 16
+                        family: 'sans-serif',
+                        size: 20
                     }
                 }
             }
