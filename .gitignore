@@ -4,3 +4,4 @@
 .venv
 __pycache__
 machine-learning-dataset
+models

@@ -2,12 +2,14 @@ import fastapi as fa
 
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers.machine_learning.regression import router as router_machine_learning_regression
-from routers.machine_learning.classification import router as router_machine_learning_classification
-from routers.machine_learning.clustering import router as router_machine_learning_clustering
-from routers.machine_learning.associaton_rule_learning import router as router_machine_learning_associaton_rule_learning
-from routers.machine_learning.reinforcement_learning import router as router_machine_learning_reinforcement_learning
-from routers.machine_learning.natural_language_processing import router as router_machine_learning_natural_language_processing
+from routers.machine_learning.regression import router as router_ml_regression
+from routers.machine_learning.classification import router as router_ml_classification
+from routers.machine_learning.clustering import router as router_ml_clustering
+from routers.machine_learning.associaton_rule_learning import router as router_ml_associaton_rule_learning
+from routers.machine_learning.reinforcement_learning import router as router_ml_reinforcement_learning
+from routers.machine_learning.natural_language_processing import router as router_ml_natural_language_processing
+
+from routers.deep_learning.artificial_neural_network import router as router_dl_artificial_neural_network
 
 # >>> Pylance for type checking (python.analysis.typeCheckingMode settings)
 # >>> Launch from CL: fastapi dev fastapi-server/main.py
@@ -34,9 +36,11 @@ app = fa.FastAPI(
 
 app.add_middleware(CORSMiddleware, allow_origins=[ 'http://localhost:3000' ], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 
-app.include_router(router_machine_learning_regression)
-app.include_router(router_machine_learning_classification)
-app.include_router(router_machine_learning_clustering)
-app.include_router(router_machine_learning_associaton_rule_learning)
-app.include_router(router_machine_learning_reinforcement_learning)
-app.include_router(router_machine_learning_natural_language_processing)
+app.include_router(router_ml_regression)
+app.include_router(router_ml_classification)
+app.include_router(router_ml_clustering)
+app.include_router(router_ml_associaton_rule_learning)
+app.include_router(router_ml_reinforcement_learning)
+app.include_router(router_ml_natural_language_processing)
+
+app.include_router(router_dl_artificial_neural_network)

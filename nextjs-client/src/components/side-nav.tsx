@@ -26,7 +26,7 @@ const MenuItem = ({ item }: { item: SideNavItem }) =>
 			(
 			<>
 			<button onClick={toggleSubMenu}
-					className={`flex flex-row items-center p-2 rounded-lg w-full justify-between hover:bg-green-800 ${ pathname.includes(item.path) ? "bg-green-900" : "" }`}>
+					className={`flex flex-row items-center p-2 mt-2 w-full justify-between border-t-4 border-dashed border-green-300 hover:rounded-lg hover:bg-green-800 ${ pathname.includes(item.path) ? "bg-green-900" : "" }`}>
 
 				<div className='flex flex-row space-x-4 items-center'>
 
@@ -94,6 +94,7 @@ const SideNav = () =>
 		else if (page === 'association-rule-learning') 		setDatasetIcon('fluent-emoji-high-contrast:shopping-cart');
 		else if (page === 'reinforcement-learning') 		setDatasetIcon('circum:shop');
 		else if (page === 'natural-language-processing')	setDatasetIcon('ri:speak-ai-line');
+		else if (page === 'artificial-neural-network')		setDatasetIcon('fontisto:apple-music');
 		else 												setDatasetIcon('');
 	}, [pathname]);
 

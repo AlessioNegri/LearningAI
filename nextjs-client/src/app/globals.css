@@ -52,6 +52,8 @@ body {
 		@apply leading-10;
 		@apply text-lg;
 		@apply font-mono;
+		@apply whitespace-nowrap;
+		@apply m-auto
 	}
 
 	input {
@@ -147,5 +149,7 @@ body {
 		@apply delay-150;
 		@apply duration-150;
 		@apply ease-in-out;
+
+		@apply disabled:bg-gray-500;
 	}
 }

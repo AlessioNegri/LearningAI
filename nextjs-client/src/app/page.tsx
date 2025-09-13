@@ -11,7 +11,7 @@ const Home = () =>
 
 		</header>
 
-		<main className='w-full h-full grid grid-cols-3 space-x-8 space-y-8'>
+		<div className='w-full h-full grid grid-cols-3 space-x-8 space-y-8'>
 
 			<Card
 				page='/machine-learning/regression'
@@ -45,7 +45,24 @@ const Home = () =>
 
 			<p></p>
 
-		</main>
+		</div>
+
+		<header className='text-center'>
+
+			<h1 className='text-5xl text-green-300 font-mono my-8'>Deep Learning</h1>
+
+		</header>
+
+		<div className='w-full h-full grid grid-cols-3 space-x-8 space-y-8'>
+
+			<Card
+				page='/deep-learning/artificial-neural-network'
+				title='Artificial Neural Network'
+				description='A deep learning Artificial Neural Network (ANN) is a computational model, inspired by the human brain, that consists of interconnected "neurons" or nodes organized into layers, including an input layer, one or more hidden layers, and an output layer' />
+
+			<p></p>
+
+		</div>
 
       	<footer></footer>
 
