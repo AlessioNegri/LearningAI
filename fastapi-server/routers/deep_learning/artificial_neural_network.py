@@ -95,7 +95,6 @@ class FitCallback(keras.callbacks.Callback):
 
 def prepare_dataset() -> None:
     """Connect to MongoDB database "LearningAI" and extract the documents from the collection "songs"
-
     """
     
     global X
@@ -260,6 +259,8 @@ def models():
     
     for id, filename in enumerate(sorted(os.listdir(MODELS_DIR))):
         
+        if not filename.startswith('songs'): continue
+        
         models_structure.append(dict(id=id, name=filename))
     
     return models_structure
@@ -270,6 +271,8 @@ def metrics():
     metrics_list : list = []
     
     for id, filename in enumerate(sorted(os.listdir(MODELS_DIR))):
+        
+        if not filename.startswith('songs'): continue
     
         ann_model : keras.Model = keras.saving.load_model(MODELS_DIR + '/' + filename)
         

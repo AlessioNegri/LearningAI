@@ -10,6 +10,7 @@ from routers.machine_learning.reinforcement_learning import router as router_ml_
 from routers.machine_learning.natural_language_processing import router as router_ml_natural_language_processing
 
 from routers.deep_learning.artificial_neural_network import router as router_dl_artificial_neural_network
+from routers.deep_learning.convolutional_neural_network import router as router_dl_convolutional_neural_network
 
 # >>> Pylance for type checking (python.analysis.typeCheckingMode settings)
 # >>> Launch from CL: fastapi dev fastapi-server/main.py
@@ -22,9 +23,13 @@ description = """LearningAI backend server implement all AI algorithms.
 * **FastAPI** 0.116.1
 * **Numpy** 2.3.2
 * **Pandas** 2.3.1
+* **Termcolor** 3.1.0
 * **SciKit-Learn** 1.7.1
 * **PyMongo** 4.13.2
-* **Termcolor** 3.1.0
+* **apyori** 1.1.2
+* **nltk** 3.9.1
+* **xgboost** 3.0.4
+* **tensorflow** 2.20.0
 """
 
 app = fa.FastAPI(
@@ -44,3 +49,4 @@ app.include_router(router_ml_reinforcement_learning)
 app.include_router(router_ml_natural_language_processing)
 
 app.include_router(router_dl_artificial_neural_network)
+app.include_router(router_dl_convolutional_neural_network)

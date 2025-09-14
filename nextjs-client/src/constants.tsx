@@ -61,7 +61,7 @@ export const SIDENAV_ITEMS : SideNavItem[] =
 			},
 			{
 				title: 'Convolutional Neural Network',
-				path: '#',
+				path: '/deep-learning/convolutional-neural-network',
 				icon: <Icon icon='mynaui:image-solid' width={32} height={32} color='#7bf1a8' />
 			},
 			{

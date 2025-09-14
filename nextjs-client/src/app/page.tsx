@@ -59,6 +59,11 @@ const Home = () =>
 				page='/deep-learning/artificial-neural-network'
 				title='Artificial Neural Network'
 				description='A deep learning Artificial Neural Network (ANN) is a computational model, inspired by the human brain, that consists of interconnected "neurons" or nodes organized into layers, including an input layer, one or more hidden layers, and an output layer' />
+			
+			<Card
+				page='/deep-learning/convolutional-neural-network'
+				title='Convolutional Neural Network'
+				description='A deep learning Convolutional Neural Network (CNN) is a type of artificial neural network, specialized for processing data with a grid-like topology, such as images.' />
 
 			<p></p>
 

@@ -149,6 +149,7 @@ body {
 		@apply delay-150;
 		@apply duration-150;
 		@apply ease-in-out;
+		@apply whitespace-nowrap;
 
 		@apply disabled:bg-gray-500;
 	}

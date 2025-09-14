@@ -3,29 +3,32 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import React, { useEffect, useState } from 'react';
 
+import { Icon } from '@iconify/react';
+
 var timer : NodeJS.Timeout;
 
-interface MetricsData
+interface PredictData
 {
-    id          : number
-    name        : string
-    accuracy    : number
-    f1          : number[]
-    precision   : number[]
-    recall      : number[]
+    id      : number
+    name    : string
+    result  : number
 }
 
-export default function PageArtificialNeuralNetwork() : any
+export default function PageConvolutionalNeuralNetwork() : any
 {
-    const [batchSize, setBatchSize] = useState<number>(16);
+    const [batchSize, setBatchSize] = useState<number>(32);
 
-    const [epochs, setEpochs] = useState<number>(100);
+    const [epochs, setEpochs] = useState<number>(25);
 
     const [progress, setProgress] = useState<number>(0);
 
     const [sync, setSync] = useState<boolean>(false);
 
-    const [metrics, setMetrics] = useState<MetricsData[]>();
+    const [predict, setPredict] = useState<PredictData[]>();
+
+    const [image, setImage] = useState<File | null | undefined>();
+
+    const [src, setSrc] = useState<string | Blob | undefined>();
 
     // --- HTTP 
 
@@ -38,44 +41,45 @@ export default function PageArtificialNeuralNetwork() : any
 
         // * Dataset
 
-        let response : any = await axios.get('http://localhost:8000/deep-learning/artificial-neural-network/dataset', config).catch( (error : any) => { return; });
+        let response : any = await axios.get(`http://localhost:8000/deep-learning/convolutional-neural-network/dataset?batch_size=${batchSize}`, config).catch( (error : any) => { return; });
 
         if (response == undefined) return;
-
-        get_metrics();
     }
 
-    // >>> HTTP GET to retrieve metrics values
-    async function get_metrics()
+    // >>> HTTP POST to retrieve predict values
+    async function post_predict()
     {
+        if (image === null || image === undefined) return;
+
         // * Settings
 
-        let config : AxiosRequestConfig<any> = { headers : { 'Content-Type': 'application/json', 'Accept': 'application/json' } };
+        let config : AxiosRequestConfig<any> = { headers : { 'Content-Type': 'multipart/form-data', 'Accept': 'application/json' } };
 
         // * Metrics
 
-        let response : any = await axios.get('http://localhost:8000/deep-learning/artificial-neural-network/metrics', config).catch( (error : any) => { return; });
+        let data : FormData = new FormData();
+
+        data.append('file', image!, image!.name);
+
+        let response : any = await axios.post('http://localhost:8000/deep-learning/convolutional-neural-network/predict', data, config).catch( (error : any) => { return; });
 
         if (response == undefined) return;
 
-        var metrics_list : MetricsData[] = [];
+        var predict_list : PredictData[] = [];
 
         for (let model of response.data)
         {
-            metrics_list.push({
-                id          : model['id'],
-                name        : model['name'],
-                accuracy    : model['accuracy'],
-                f1          : model['f1'],
-                precision   : model['precision'],
-                recall      : model['recall']
+            predict_list.push({
+                id      : model['id'],
+                name    : model['name'],
+                result  : model['result']
             });
         }
 
-        setMetrics(metrics_list);
+        setPredict(predict_list);
     }
 
-    // >>> HTTP GET to train the ANN
+    // >>> HTTP GET to train the CNN
     async function get_train()
     {
         // * Settings
@@ -84,14 +88,14 @@ export default function PageArtificialNeuralNetwork() : any
 
         // * Dataset
 
-        let response : any = await axios.get(`http://localhost:8000/deep-learning/artificial-neural-network/train?batch_size=${batchSize}&epochs=${epochs}`, config).catch( (error : any) => { return; });
+        let response : any = await axios.get(`http://localhost:8000/deep-learning/convolutional-neural-network/train?epochs=${epochs}`, config).catch( (error : any) => { return; });
 
         if (response == undefined) return;
 
         setSync(true);
     }
 
-    // >>> HTTP GET to retrieve the ANN progress status
+    // >>> HTTP GET to retrieve the CNN progress status
     async function get_status()
     {
         // * Settings
@@ -100,7 +104,7 @@ export default function PageArtificialNeuralNetwork() : any
 
         // * Dataset
 
-        let response : any = await axios.get(`http://localhost:8000/deep-learning/artificial-neural-network/status`, config).catch( (error : any) => { return; });
+        let response : any = await axios.get(`http://localhost:8000/deep-learning/convolutional-neural-network/status`, config).catch( (error : any) => { return; });
 
         if (response == undefined) return;
 
@@ -109,12 +113,10 @@ export default function PageArtificialNeuralNetwork() : any
         if (response.data['trained'] || response.data['stop'])
         {
             setSync(false);
-
-            get_metrics();
         }
     }
 
-    // >>> HTTP PUT to stop ANN training
+    // >>> HTTP PUT to stop CNN training
     async function put_stop_training()
     {
         // * Settings
@@ -123,7 +125,7 @@ export default function PageArtificialNeuralNetwork() : any
 
         // * Dataset
 
-        let response : any = await axios.put('http://localhost:8000/deep-learning/artificial-neural-network/stop-training', config).catch( (error : any) => { return; });
+        let response : any = await axios.put('http://localhost:8000/deep-learning/convolutional-neural-network/stop-training', config).catch( (error : any) => { return; });
 
         if (response == undefined) return;
 
@@ -134,7 +136,9 @@ export default function PageArtificialNeuralNetwork() : any
 
     useEffect(() => { get_data(); get_status() }, []);
 
-    useEffect(() => { if (sync) { timer = setInterval( () => { get_status() }, 1000); } else { clearInterval(timer) } }, [sync])
+    useEffect(() => { if (sync) { timer = setInterval( () => { get_status() }, 1000); } else { clearInterval(timer) } }, [sync]);
+
+    useEffect(() => { if (image !== undefined) { setSrc(URL.createObjectURL(image!)); } post_predict(); }, [image]);
 
     // --- Rendering 
 
@@ -158,6 +162,8 @@ export default function PageArtificialNeuralNetwork() : any
 
                 <label className='ml-4'>{Number(progress).toFixed(2)} %</label>
 
+                <input placeholder={'Load File...'} type='file' name='image' disabled={sync} accept='.jpg,.png,.jpeg' value={''} onChange={ (e) => { setImage(e.target.files?.item(0)) } } />
+
             </div>
 
             <div className="flex flex-col w-full h-full overflow-auto text-green-300 shadow-md shadow-green-300 rounded-4xl bg-clip-border border-4 border-green-300">
@@ -167,46 +173,44 @@ export default function PageArtificialNeuralNetwork() : any
                     <thead className="bg-sky-800 text-2xl">
                         <tr className="border-b-2 border-green-300">
                             <th className="border-r-2 border-green-300">Model</th>
-                            <th>Accuracy</th>
-                            <th>Precision</th>
-                            <th>Recall</th>
-                            <th>F1</th>
+                            <th>Image</th>
+                            <th>Prediction</th>
                         </tr>
                     </thead>
 
                     <tbody className="bg-sky-900 text-2xl text-center">
                         {
-                            metrics?.map( (value: MetricsData, index: number) =>
+                            predict?.map( (value: PredictData, index: number) =>
                             {
                                 return (
                                     <tr key={index}>
                                         <td className="text-left border-r-2 border-green-300">{value.name}</td>
-                                        <td>{Number(value.accuracy).toFixed(2) + ' %'}</td>
-                                        <td>{value.precision.map( (e : number) => { return Number(e).toFixed(2) + ' % ' } )}</td>
-                                        <td>{value.recall.map( (e : number) => { return Number(e).toFixed(2) + ' % ' } )}</td>
-                                        <td>{value.f1.map( (e : number) => { return Number(e).toFixed(2) + ' % ' } )}</td>
+                                        <td className='flex justify-center'><img src={src} /></td>
+                                        <td>
+                                            <div className='flex'>
+                                                <Icon icon='solar:cat-bold' width={100} height={100} color={`${value.result == 0 ? '#00FF00' : '#FF0000'}`} className='mt-auto w-full' />
+                                                <Icon icon='mdi:dog' width={100} height={100} color={`${value.result == 1 ? '#00FF00' : '#FF0000'}`} className='mt-auto w-full' />
+                                            </div>
+                                        </td>
                                     </tr>
                                 )
                             })
                         }
                     </tbody>
 
-                    <caption className="bg-sky-900 caption-bottom h-10 pt-2">
-                        For Precision, Recall, and F1 are listed the values for Low, Medium, and High song popularity.
-                    </caption>
-
                 </table>
 
             </div>
 
             <div className="description">
-                <h1 className="description-title">Artificial Neural Network</h1>
+                <h1 className="description-title">Convolutional Neural Network</h1>
                 <p>
-                    A deep learning <strong>Artificial Neural Network</strong> (ANN) is a computational model, inspired by the human brain,
-                    that consists of interconnected "neurons" or nodes organized into layers, including an input layer, one or more hidden layers,
-                    and an output layer. These layers process information by passing signals through weighted connections and activation functions,
-                    and the network learns from data through a process called training, typically using backpropagation to adjust the weights and
-                    improve its ability to recognize patterns, make predictions, and solve complex problems in areas like image recognition and natural language processing. 
+                    A deep learning <strong>Convolutional Neural Network</strong> (CNN) is a type of artificial neural network,
+                    specialized for processing data with a grid-like topology, such as images. CNNs use convolutional layers with
+                    filters to automatically detect hierarchical features—from simple edges and textures to complex objects—in an image,
+                    mimicking the human visual system. Key components include convolutional layers, pooling layers for dimensionality reduction,
+                    and fully connected layers for classification, enabling them to achieve state-of-the-art results in tasks like image
+                    classification, object detection, and medical image analysis. 
                 </p>
             </div>
 
