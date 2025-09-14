@@ -101,4 +101,4 @@ The project is structured in the following folders:
 
 ### Convolutional Neural Network
 
-<p align="center"><img src="./images/convolutional-neural-network.png" width="100%"></p>
+<p align="center"><img src="./images/convolutional-neural-network.png?" width="100%"></p>

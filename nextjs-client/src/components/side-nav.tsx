@@ -95,6 +95,7 @@ const SideNav = () =>
 		else if (page === 'reinforcement-learning') 		setDatasetIcon('circum:shop');
 		else if (page === 'natural-language-processing')	setDatasetIcon('ri:speak-ai-line');
 		else if (page === 'artificial-neural-network')		setDatasetIcon('fontisto:apple-music');
+		else if (page === 'convolutional-neural-network')	setDatasetIcon('fluent:animal-paw-print-24-filled');
 		else 												setDatasetIcon('');
 	}, [pathname]);
 
