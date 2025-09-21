@@ -65,6 +65,11 @@ const Home = () =>
 				title='Convolutional Neural Network'
 				description='A deep learning Convolutional Neural Network (CNN) is a type of artificial neural network, specialized for processing data with a grid-like topology, such as images.' />
 
+			<Card
+				page='/deep-learning/recurrent-neural-network'
+				title='Recurrent Neural Network'
+				description='A Recurrent Neural Network (RNN) is a type of deep learning model designed to process sequential data, such as time series, text, or speech, by using internal memory to retain information from previous inputs to influence current and future outputs.' />
+
 			<p></p>
 
 		</div>

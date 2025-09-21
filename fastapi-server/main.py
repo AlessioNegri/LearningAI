@@ -11,6 +11,7 @@ from routers.machine_learning.natural_language_processing import router as route
 
 from routers.deep_learning.artificial_neural_network import router as router_dl_artificial_neural_network
 from routers.deep_learning.convolutional_neural_network import router as router_dl_convolutional_neural_network
+from routers.deep_learning.recurrent_neural_network import router as router_dl_recurrent_neural_network
 
 # >>> Pylance for type checking (python.analysis.typeCheckingMode settings)
 # >>> Launch from CL: fastapi dev fastapi-server/main.py
@@ -50,3 +51,4 @@ app.include_router(router_ml_natural_language_processing)
 
 app.include_router(router_dl_artificial_neural_network)
 app.include_router(router_dl_convolutional_neural_network)
+app.include_router(router_dl_recurrent_neural_network)

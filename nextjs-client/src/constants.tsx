@@ -66,7 +66,7 @@ export const SIDENAV_ITEMS : SideNavItem[] =
 			},
 			{
 				title: 'Recurrent Neural Network',
-				path: '#',
+				path: '/deep-learning/recurrent-neural-network',
 				icon: <Icon icon='streamline-freehand:security-network-chain' width={32} height={32} color='#7bf1a8' />
 			},
 			{

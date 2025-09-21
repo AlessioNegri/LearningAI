@@ -86,7 +86,7 @@ const SideNav = () =>
 
 	useEffect(() =>
 	{
-		const page = pathname!.split('/')[2];
+		const page : String = pathname!.split('/')[2];
 
 		if 		(page === 'regression') 					setDatasetIcon('carbon:emissions-management');
 		else if (page === 'classification') 				setDatasetIcon('game-icons:sinking-ship');
@@ -96,6 +96,7 @@ const SideNav = () =>
 		else if (page === 'natural-language-processing')	setDatasetIcon('ri:speak-ai-line');
 		else if (page === 'artificial-neural-network')		setDatasetIcon('fontisto:apple-music');
 		else if (page === 'convolutional-neural-network')	setDatasetIcon('fluent:animal-paw-print-24-filled');
+		else if (page === 'recurrent-neural-network')		setDatasetIcon('streamline-sharp:stock-remix');
 		else 												setDatasetIcon('');
 	}, [pathname]);
 

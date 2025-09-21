@@ -18,7 +18,7 @@
 ![Static Badge](https://img.shields.io/badge/chart.js-white?style=flat&logo=chart.js&logoColor=white&label=4.1.11&labelColor=blue&color=darkcyan)
 ![Static Badge](https://img.shields.io/badge/framer_motion-white?style=flat&logo=framer&logoColor=white&label=12.23.12&labelColor=blue&color=darkcyan)
 
-<p align="center"><img src="./images/home.png" width="100%"></p>
+<p align="center"><img src="./images/home.png?" width="100%"></p>
 
 ## 📖 Introduction
 
@@ -102,3 +102,7 @@ The project is structured in the following folders:
 ### Convolutional Neural Network
 
 <p align="center"><img src="./images/convolutional-neural-network.png?" width="100%"></p>
+
+### Recurrent Neural Network
+
+<p align="center"><img src="./images/recurrent-neural-network.png?" width="100%"></p>
