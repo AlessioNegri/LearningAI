@@ -3,6 +3,5 @@
 
 .venv
 __pycache__
-machine-learning-dataset
-deep-learning-dataset
+dataset
 models

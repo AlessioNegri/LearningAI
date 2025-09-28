@@ -22,7 +22,7 @@ from typing import Annotated, List
 
 # --- Params 
 
-DATASET_DIR : str = './deep-learning-dataset/cnn'
+DATASET_DIR : str = './dataset/deep-learning/cnn'
 
 MODELS_DIR : str = './fastapi-server/models'
 

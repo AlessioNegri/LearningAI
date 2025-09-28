@@ -97,6 +97,7 @@ const SideNav = () =>
 		else if (page === 'artificial-neural-network')		setDatasetIcon('fontisto:apple-music');
 		else if (page === 'convolutional-neural-network')	setDatasetIcon('fluent:animal-paw-print-24-filled');
 		else if (page === 'recurrent-neural-network')		setDatasetIcon('streamline-sharp:stock-remix');
+		else if (page === 'self-organizing-map')			setDatasetIcon('f7:creditcard-fill');
 		else 												setDatasetIcon('');
 	}, [pathname]);
 

@@ -69,6 +69,11 @@ const Home = () =>
 				page='/deep-learning/recurrent-neural-network'
 				title='Recurrent Neural Network'
 				description='A Recurrent Neural Network (RNN) is a type of deep learning model designed to process sequential data, such as time series, text, or speech, by using internal memory to retain information from previous inputs to influence current and future outputs.' />
+			
+			<Card
+				page='/deep-learning/self-organizing-map'
+				title='Self Organizing Map'
+				description='A Self-Organizing Map (SOM) is an unsupervised neural network that uses a competitive learning approach to reduce the dimensionality of high-dimensional data into a low-dimensional, typically two-dimensional, "map".' />
 
 			<p></p>
 

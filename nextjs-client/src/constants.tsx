@@ -71,7 +71,7 @@ export const SIDENAV_ITEMS : SideNavItem[] =
 			},
 			{
 				title: 'Self Organizing Map',
-				path: '#',
+				path: '/deep-learning/self-organizing-map',
 				icon: <Icon icon='lsicon:map-outline' width={32} height={32} color='#7bf1a8' />
 			},
 			{

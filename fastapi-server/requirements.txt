@@ -81,3 +81,10 @@
 #wheel-0.45.1
 #wrapt-1.17.3
 "aiofiles"==24.1.0
+"minisom"==2.3.5
+"matplotlib"==3.10.6
+#contourpy-1.3.3
+#cycler-0.12.1
+#fonttools-4.60.0
+#kiwisolver-1.4.9
+#pyparsing-3.2.5
