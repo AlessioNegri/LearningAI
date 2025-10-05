@@ -13,6 +13,7 @@ from routers.deep_learning.artificial_neural_network import router as router_dl_
 from routers.deep_learning.convolutional_neural_network import router as router_dl_convolutional_neural_network
 from routers.deep_learning.recurrent_neural_network import router as router_dl_recurrent_neural_network
 from routers.deep_learning.self_organizing_map import router as router_dl_self_organizing_map
+from routers.deep_learning.restricted_boltzmann_machine import router as router_dl_restricted_boltzmann_machine
 
 # >>> Pylance for type checking (python.analysis.typeCheckingMode settings)
 # >>> Launch from CL: fastapi dev fastapi-server/main.py
@@ -32,6 +33,10 @@ description = """LearningAI backend server implement all AI algorithms.
 * **nltk** 3.9.1
 * **xgboost** 3.0.4
 * **tensorflow** 2.20.0
+* **aiofiles** 24.1.0
+* **minisom** 2.3.5
+* **matplotlib** 3.10.6
+* **torch** 2.8.0
 """
 
 app = fa.FastAPI(
@@ -54,3 +59,4 @@ app.include_router(router_dl_artificial_neural_network)
 app.include_router(router_dl_convolutional_neural_network)
 app.include_router(router_dl_recurrent_neural_network)
 app.include_router(router_dl_self_organizing_map)
+app.include_router(router_dl_restricted_boltzmann_machine)

@@ -76,7 +76,7 @@ export const SIDENAV_ITEMS : SideNavItem[] =
 			},
 			{
 				title: 'Restricted Boltzmann Machine',
-				path: '#',
+				path: '/deep-learning/restricted-boltzmann-machine',
 				icon: <Icon icon='fluent-emoji-high-contrast:slot-machine' width={32} height={32} color='#7bf1a8' />
 			},
 			{

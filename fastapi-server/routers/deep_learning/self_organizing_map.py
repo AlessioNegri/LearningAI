@@ -16,10 +16,8 @@ import tensorflow as tf
 from common import utility
 
 from collections import defaultdict
-from fastapi import APIRouter, BackgroundTasks, HTTPException, Query, status
+from fastapi import APIRouter, Query
 from fastapi.responses import FileResponse
-from matplotlib import cm
-from matplotlib.patches import RegularPolygon
 from minisom import MiniSom
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from pydantic import BaseModel
@@ -53,7 +51,7 @@ router : APIRouter = APIRouter(prefix='/deep-learning/self-organizing-map', tags
 # --- Utility 
 
 def prepare_dataset() -> None:
-    """Connect to MongoDB database "LearningAI" and extract the documents from the collection "songs"
+    """Connect to MongoDB database "LearningAI" and extract the documents from the collection "credit_card_applications"
     """
     
     global X

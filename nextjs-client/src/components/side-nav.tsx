@@ -98,6 +98,7 @@ const SideNav = () =>
 		else if (page === 'convolutional-neural-network')	setDatasetIcon('fluent:animal-paw-print-24-filled');
 		else if (page === 'recurrent-neural-network')		setDatasetIcon('streamline-sharp:stock-remix');
 		else if (page === 'self-organizing-map')			setDatasetIcon('f7:creditcard-fill');
+		else if (page === 'restricted-boltzmann-machine')	setDatasetIcon('mdi:film-open-outline');
 		else 												setDatasetIcon('');
 	}, [pathname]);
 
