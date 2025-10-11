@@ -48,6 +48,7 @@ const Header = () =>
             else if (subField === 'recurrent-neural-network')		setSubFieldIcon('streamline-sharp:stock-remix');
             else if (subField === 'self-organizing-map')			setSubFieldIcon('f7:creditcard-fill');
             else if (subField === 'restricted-boltzmann-machine')   setSubFieldIcon('mdi:film-open-outline');
+            else if (subField === 'stacked-autoencoder')            setSubFieldIcon('mdi:film-open-outline');
             else 												    setSubFieldIcon('');
         }
         else
