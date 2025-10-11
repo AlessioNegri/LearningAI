@@ -79,6 +79,11 @@ const Home = () =>
                     page='/deep-learning/restricted-boltzmann-machine'
                     title='Restricted Boltzmann Machine'
                     description='A Restricted Boltzmann Machine (RBM) is a type of stochastic unsupervised artificial neural network with two layers (a visible layer for input data and a hidden layer for learned features) that are connected only to each other, with no connections within the same layer.' />
+                
+                <Card
+                    page='/deep-learning/stacked-autoencoder'
+                    title='Stacked Autoencoder'
+                    description='A Stacked Autoencoder (SAE) is a deep neural network that learns hierarchical feature representations of data by stacking multiple autoencoders on top of each other.' />
 
                 <p></p>
 

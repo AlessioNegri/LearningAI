@@ -80,8 +80,8 @@ export const SIDENAV_ITEMS : SideNavItem[] =
 				icon: <Icon icon='fluent-emoji-high-contrast:slot-machine' width={32} height={32} color='#7bf1a8' />
 			},
 			{
-				title: 'Auto Encoder',
-				path: '#',
+				title: 'Stacked Autoencoder',
+				path: '/deep-learning/stacked-autoencoder',
 				icon: <Icon icon='file-icons:adobe-mediaencoder' width={32} height={32} color='#7bf1a8' />
 			}
 		]

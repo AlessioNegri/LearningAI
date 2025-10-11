@@ -14,6 +14,7 @@ from routers.deep_learning.convolutional_neural_network import router as router_
 from routers.deep_learning.recurrent_neural_network import router as router_dl_recurrent_neural_network
 from routers.deep_learning.self_organizing_map import router as router_dl_self_organizing_map
 from routers.deep_learning.restricted_boltzmann_machine import router as router_dl_restricted_boltzmann_machine
+from routers.deep_learning.stacked_autoencoder import router as router_dl_stacked_autoencoder
 
 # >>> Pylance for type checking (python.analysis.typeCheckingMode settings)
 # >>> Launch from CL: fastapi dev fastapi-server/main.py
@@ -60,3 +61,4 @@ app.include_router(router_dl_convolutional_neural_network)
 app.include_router(router_dl_recurrent_neural_network)
 app.include_router(router_dl_self_organizing_map)
 app.include_router(router_dl_restricted_boltzmann_machine)
+app.include_router(router_dl_stacked_autoencoder)

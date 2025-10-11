@@ -129,3 +129,7 @@ The project is structured in the following folders:
 ### Restricted Boltzmann Machine
 
 <p align="center"><img src="./images/restricted-boltzmann-machine.png" width="100%"></p>
+
+### Stacked Autoencoder
+
+<p align="center"><img src="./images/stacked-autoencoder.png" width="100%"></p>

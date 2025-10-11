@@ -13,7 +13,7 @@ from typing import Annotated, List
 
 # --- Params 
 
-MODELS_DIR : str = './fastapi-server/models'
+MODELS_DIR : str = './fastapi-server/models/rbm'
 
 number_users : int = 0
 
@@ -281,7 +281,6 @@ def train_model(batch_size : int = 100, epochs : int = 10) -> None:
         
         if info_data.stopped:
             
-            info_data.stopped       = False
             info_data.trained       = False
             info_data.epoch_count   = 1
             
@@ -294,6 +293,8 @@ def train_model(batch_size : int = 100, epochs : int = 10) -> None:
         
         # * Save the model
         
+        if not os.path.exists(MODELS_DIR): os.mkdir(MODELS_DIR)
+        
         model_path : str = f'{MODELS_DIR}/movies-bs_{batch_size}-epochs_{epochs}'
         
         if os.path.exists(model_path): shutil.rmtree(model_path)
@@ -303,6 +304,10 @@ def train_model(batch_size : int = 100, epochs : int = 10) -> None:
         torch.save(rbm.W, f'{model_path}/W.pt')
         torch.save(rbm.a, f'{model_path}/a.pt')
         torch.save(rbm.b, f'{model_path}/b.pt')
+    
+    else:
+        
+        info_data.stopped = False
 
 def test_model(rbm_model : RBM) -> float:
     """Test the RBM model

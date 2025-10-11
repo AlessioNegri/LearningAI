@@ -99,6 +99,7 @@ const SideNav = () =>
 		else if (page === 'recurrent-neural-network')		setDatasetIcon('streamline-sharp:stock-remix');
 		else if (page === 'self-organizing-map')			setDatasetIcon('f7:creditcard-fill');
 		else if (page === 'restricted-boltzmann-machine')	setDatasetIcon('mdi:film-open-outline');
+		else if (page === 'stacked-autoencoder')			setDatasetIcon('mdi:film-open-outline');
 		else 												setDatasetIcon('');
 	}, [pathname]);
 
